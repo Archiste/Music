@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Archiste - lecteur audio, activite Discord et heure de Paris.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https: data:; media-src 'self'; connect-src 'self' wss://api.lanyard.rest; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Archiste - Music Player">
+  <meta property="og:description" content="Un lecteur audio glitch.">
+  <meta property="og:image" content="archiste.png">
+  <meta property="og:image:type" content="image/png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Archiste - Music Player">
+  <meta name="twitter:description" content="Un lecteur audio glitch.">
+  <meta name="twitter:image" content="archiste.png">
+  <title>Archiste - Music Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="archiste.png">
+  <link rel="icon" type="image/x-icon" href="Icon.ico">
+  <link rel="alternate icon" type="image/gif" href="archiste-glitch.gif">
+</head>
+<body>
+  <video class="background-video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="92be9e2b-e503-4b50-b672-b32a10e6301f.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
+  <main class="app-shell">
+    <section class="player-page" aria-label="Lecteur de musique">
+      <section class="player" aria-label="Music player">
+      <header class="player-header">
+        <div class="brand-lockup">
+          <img class="profile-photo" src="archiste.png" alt="Photo de profil d'Archiste">
+          <div>
+            <p class="eyebrow">mes likes </p>
+            <h1 class="glitch-text" data-text="Archiste">Archiste</h1>
+          </div>
+        </div>
+        <span class="track-count" id="track-count">05 titres</span>
+      </header>
+      <div class="visualizer" aria-hidden="true">
+        <canvas id="visualizer-canvas"></canvas>
+        <span class="visualizer-line"></span>
+      </div>
+      <ol class="playlist" id="playlist" aria-label="Playlist">
+        <li class="playlist-item" data-src="Hope.mp3">
+          <span>01</span><strong class="track-name">Hope</strong>
+        </li>
+        <li class="playlist-item" data-src="PK TU MAIMES.mp3">
+          <span>02</span><strong class="track-name">PK TU MAIMES</strong>
+        </li>
+        <li class="playlist-item" data-src="Firmament.mp3">
+          <span>03</span><strong class="track-name">Firmament</strong>
+        </li>
+        <li class="playlist-item" data-src="bref, jen ai fait un son.mp3">
+          <span>04</span><strong class="track-name">bref, jen ai fait un son</strong>
+        </li>
+        <li class="playlist-item" data-src="SEUL.mp3">
+          <span>05</span><strong class="track-name">SEUL</strong>
+        </li>
+        <li class="playlist-item" data-src="XXXTENTACION - Revenge (Audio).mp3">
+          <span>06</span><strong class="track-name">XXXTENTACION - Revenge</strong>
+        </li>
+        <li class="playlist-item" data-src="PLK - Problèmes (Clip officiel).mp3">
+          <span>07</span><strong class="track-name">PLK - Problèmes</strong>
+        </li> 
+      </ol>
+
+      <div class="track-info">
+        <h2 id="now-title" aria-live="polite">Choose a track</h2>
+      </div>
+
+      <div class="progress-wrap">
+        <input id="progress" type="range" min="0" max="100" value="0" aria-label="Track progress">
+        <div class="time-row"><span id="current-time">0:00</span><span id="duration">0:00</span></div>
+      </div>
+
+      <div class="controls">
+        <button id="previous-button" type="button" aria-label="Previous track"></button>
+        <button class="play-button" id="play-button" type="button" aria-label="Play"></button>
+        <button id="next-button" type="button" aria-label="Next track"></button>
+      </div>
+
+      <div class="volume">
+        <span>-</span>
+        <input id="volume" type="range" min="0" max="1" value="0.8" step="0.01" aria-label="Volume">
+        <span>+</span>
+      </div>
+      <audio id="audio" preload="metadata"></audio>
+      <a class="scroll-cue" href="#discord-page" aria-label="Voir la page Discord">
+        <span>← → NAVIGUER</span>
+        <span class="scroll-arrow" aria-hidden="true">↓</span>
+      </a>
+      </section>
+    </section>
+    <section class="discord-page" id="discord-page" aria-label="Activité Discord en temps réel">
+      <div class="discord-intro">
+        <span class="eyebrow">espace communautaire</span>
+        <h2>Discord en direct</h2>
+        <p>Retrouve mon activité et mon statut en temps réel.</p>
+      </div>
+      <div class="discord-card">
+        <div class="discord-heading">
+          <span class="discord-label">
+            <img class="discord-avatar" src="archiste.png" alt="">
+            <strong class="glitch-text" id="discord-username" data-text="archiste.">archiste.</strong>
+            <span aria-hidden="true">· DISCORD</span>
+          </span>
+          <span class="discord-status" id="discord-status"><i aria-hidden="true"></i> CONNEXION...</span>
+        </div>
+        <div class="discord-activity">
+          <div class="activity-cover" id="activity-cover" aria-hidden="true"></div>
+          <div class="activity-copy">
+            <strong id="activity-name">Activité Discord</strong>
+            <span id="activity-details">En attente du statut...</span>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue discord-scroll-cue" href="#paris-page" aria-label="Voir l'heure de Paris">
+        <span>MON HEURE</span>
+        <span class="scroll-arrow" aria-hidden="true">↓</span>
+      </a>
+      <footer class="site-footer">
+        <span class="glitch-text" data-text="ARCHISTE">ARCHISTE</span>
+        <span>· AUDIO PLAYER</span>
+      </footer>
+    </section>
+    <section class="paris-page" id="paris-page" aria-label="Heure de Paris">
+      <div class="paris-intro">
+        <span class="eyebrow">fuseau horaire</span>
+        <h2>Mon Heure</h2>
+        <p>Heure en temps réel</p>
+      </div>
+      <div class="clock-card">
+        <div class="gothic-clock" aria-label="Heure de Paris">
+          <span class="gothic-cross" aria-hidden="true">✦</span>
+          <time id="paris-time" datetime="">00:00:00</time>
+          <span class="gothic-cross" aria-hidden="true">✦</span>
+        </div>
+        <span class="clock-caption">PARIS · TEMPS RÉEL</span>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
