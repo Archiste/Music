@@ -11,7 +11,6 @@
 
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Archiste - Music Player">
   <meta property="og:description" content="Un lecteur audio glitch.">
@@ -22,7 +21,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Archiste - Music Player">
 
-  <!-- Twitter -->
+  
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Archiste - Music Player">
   <meta name="twitter:description" content="Un lecteur audio glitch.">
@@ -30,21 +29,15 @@
 
   <title>Archiste - Music Player</title>
 
-  <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-
-  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- PWA -->
   <link rel="manifest" href="site.webmanifest">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="192x192" href="archiste.png">
   <link rel="icon" type="image/x-icon" href="Icon.ico">
 </head>
@@ -103,7 +96,6 @@
 
         </header>
 
-        <!-- VISUALIZER -->
         <div
           class="visualizer"
           aria-hidden="true"
@@ -112,7 +104,6 @@
           <span class="visualizer-line"></span>
         </div>
 
-        <!-- PLAYLIST -->
         <ol
           class="playlist"
           id="playlist"
@@ -183,14 +174,12 @@
 
         </ol>
 
-        <!-- CURRENT TRACK -->
         <div class="track-info">
           <h2 id="now-title" aria-live="polite">
             Choose a track
           </h2>
         </div>
 
-        <!-- PROGRESS -->
         <div class="progress-wrap">
 
           <input
@@ -209,7 +198,6 @@
 
         </div>
 
-        <!-- CONTROLS -->
         <div class="controls">
 
           <button
@@ -233,7 +221,6 @@
 
         </div>
 
-        <!-- VOLUME -->
         <div class="volume">
 
           <span>-</span>
@@ -252,13 +239,11 @@
 
         </div>
 
-        <!-- AUDIO -->
         <audio
           id="audio"
           preload="metadata"
         ></audio>
 
-        <!-- NAVIGATION -->
         <a
           class="scroll-cue"
           href="#discord-page"
@@ -277,7 +262,6 @@
 
     </section>
 
-    <!-- DISCORD -->
     <section
       class="discord-page"
       id="discord-page"
@@ -389,8 +373,6 @@
       </footer>
 
     </section>
-
-    <!-- PARIS CLOCK -->
     <section
       class="paris-page"
       id="paris-page"
